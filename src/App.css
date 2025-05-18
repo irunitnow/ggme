@@ -1,0 +1,783 @@
+/* Reset some basic elements */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f5f5f5;
+}
+
+/* App Layout */
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.app-header {
+  width: 100%;
+  text-align: center;
+  padding: 1rem 0;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+.layout-container {
+  display: flex;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0;
+  gap: 20px;
+  min-height: 50vh; /* Reduce empty space on home page */
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+  min-width: 0;
+}
+
+.sidebar {
+  width: 320px;
+  flex-shrink: 0;
+  background-color: #f8f9fa;
+  padding: 1rem;
+  border-left: 1px solid #e9ecef;
+  height: calc(100vh - 60px);
+  overflow-y: auto;
+  position: sticky;
+  top: 0;
+}
+
+/* Input Section */
+.input-section {
+  margin-bottom: 2rem;
+  padding: 0 20px;
+}
+
+.output-section {
+  padding: 0 20px;
+}
+
+.input-row {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.input-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group label {
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.input-group input,
+.input-group select {
+  padding: 8px 12px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+}
+
+/* Buttons */
+/* Button Group Styling */
+.button-group {
+  display: flex;
+  gap: 10px;
+  margin: 20px 0;
+  width: 100%;
+}
+
+.generate-button,
+.generate-images-button {
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+
+.generate-button {
+  width: 100%;
+  margin-bottom: 1rem;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  white-space: nowrap;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+
+.generate-button:hover {
+  background-color: #45a049;
+}
+
+.generate-images-button {
+  background-color: #2196F3;
+}
+
+.generate-images-button:hover {
+  background-color: #0b7dda;
+}
+
+.generate-button:disabled,
+.generate-images-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.download-button {
+  padding: 8px 16px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.download-button:hover {
+  background-color: #218838;
+}
+
+/* Sidebar Tabs */
+.sidebar-tabs {
+  display: flex;
+  border-bottom: 1px solid #dee2e6;
+  margin-bottom: 1rem;
+}
+
+.tab-button {
+  flex: 1;
+  padding: 0.75rem;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  font-weight: 500;
+  color: #6c757d;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tab-button:hover {
+  color: #495057;
+  background-color: #f1f3f5;
+}
+
+.tab-button.active {
+  color: #007bff;
+  border-bottom-color: #007bff;
+}
+
+.sidebar-content {
+  padding: 0.5rem 0;
+}
+
+/* Rich Text Editor Toolbar Styles */
+.editor-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-bottom: 10px;
+  padding: 8px;
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.toolbar-button {
+  padding: 6px 10px;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 30px;
+}
+
+.toolbar-button:hover {
+  background-color: #f0f0f0;
+}
+
+.toolbar-button:active {
+  background-color: #e0e0e0;
+}
+
+.toolbar-divider {
+  margin: 0 5px;
+  color: #ccc;
+  align-self: center;
+}
+
+.sidebar-section {
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.sidebar-section h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  color: #343a40;
+}
+
+.sidebar-section button {
+  margin-right: 0.5rem;
+  margin-top: 0.5rem;
+  padding: 6px 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.sidebar-section button:hover {
+  background-color: #0069d9;
+}
+
+.sidebar-section button:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+/* Generated Items */
+.generated-item {
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  border: 1px solid #e9ecef;
+  border-radius: 4px;
+  background-color: white;
+}
+
+.generated-item.selected {
+  border-color: #007bff;
+  background-color: #f0f7ff;
+}
+
+.keywords-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.keyword-tag {
+  background-color: #e9ecef;
+  color: #495057;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+}
+
+/* Editor */
+.tiptap-editor {
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  padding: 1rem;
+  min-height: 300px;
+  margin-bottom: 1rem;
+  background-color: white;
+}
+
+/* Image Generation Tab */
+.image-generation-tab h2,
+.settings-tab h2,
+.wordpress-tab h2 {
+  font-size: 1.5rem;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.service-selector {
+  margin-bottom: 1rem;
+}
+
+.generate-image-button {
+  width: 100%;
+  margin-bottom: 1rem;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.generate-image-button:hover {
+  background-color: #218838;
+}
+
+.generate-image-button:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+.generated-image {
+  margin-top: 1rem;
+}
+
+.generated-image img {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.error-message {
+  color: #dc3545;
+  padding: 0.75rem;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.success-message {
+  color: #28a745;
+  padding: 0.75rem;
+  background-color: #d4edda;
+  border: 1px solid #c3e6cb;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+/* Settings Tab */
+.settings-tab input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+}
+
+.settings-info {
+  font-size: 0.85rem;
+  color: #6c757d;
+  margin-bottom: 1rem;
+}
+
+/* WordPress Tab */
+.wordpress-form {
+  margin-bottom: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+}
+
+.form-group small {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.85rem;
+  color: #6c757d;
+}
+
+.form-group a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.form-group a:hover {
+  text-decoration: underline;
+}
+
+.wordpress-connect-button,
+.wordpress-publish-button {
+  width: 100%;
+  padding: 10px 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.generate-button:hover {
+  background-color: #0056b3;
+}
+
+.generate-button:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+  margin-bottom: 1rem;
+}
+
+.wordpress-connect-button:hover,
+.wordpress-publish-button:hover {
+  background-color: #005d8c;
+}
+
+.wordpress-connect-button:disabled,
+.wordpress-publish-button:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+.connection-status {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem;
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.connection-status.connected {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.status-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #28a745;
+  margin-right: 8px;
+}
+
+.disconnect-button {
+  margin-left: auto;
+  background: none;
+  border: none;
+  color: #dc3545;
+  cursor: pointer;
+  font-size: 0.85rem;
+  padding: 0;
+}
+
+.disconnect-button:hover {
+  text-decoration: underline;
+}
+
+.publishing-summary {
+  background-color: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 4px;
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
+.publishing-summary h4 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  font-size: 1rem;
+}
+
+.publishing-summary ul {
+  margin: 0;
+  padding-left: 1.5rem;
+}
+
+.publishing-summary li {
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.publishing-result {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  border-radius: 4px;
+}
+
+.publishing-result.success {
+  background-color: #d4edda;
+  border: 1px solid #c3e6cb;
+  color: #155724;
+}
+
+.publishing-result.error {
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  color: #721c24;
+}
+
+.view-post-link {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 6px 12px;
+  background-color: #28a745;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.view-post-link:hover {
+  background-color: #218838;
+  text-decoration: none;
+}
+
+/* WordPress connection styles */
+.wordpress-connection {
+  margin-top: 20px;
+}
+
+.publish-options {
+  margin-bottom: 20px;
+}
+
+.publish-option {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 8px;
+  padding: 8px;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  transition: background-color 0.2s;
+}
+
+.publish-option:hover {
+  background-color: #f0f0f0;
+}
+
+.publish-option input[type="checkbox"] {
+  margin-right: 10px;
+  margin-top: 3px;
+}
+
+.publish-option label {
+  flex: 1;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.publish-option strong {
+  color: #333;
+  margin-right: 5px;
+}
+
+.password-note {
+  display: block;
+  margin-top: 5px;
+  color: #d32f2f;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+  .layout-container {
+    flex-direction: column;
+    padding: 0 20px;
+  }
+  
+  .sidebar {
+    width: 100%;
+    height: auto;
+    border-left: none;
+    border-top: 1px solid #e9ecef;
+    margin-top: 20px;
+    position: static;
+  }
+  
+  .input-row {
+    flex-direction: column;
+  }
+}
+
+/* Generated Images Styling */
+.generated-image {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 20px 0;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.generated-image:hover {
+  transform: scale(1.02);
+}
+
+/* Image Service Selection */
+.service-selector {
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+}
+
+.service-selector h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+}
+
+.radio-group {
+  display: flex;
+  gap: 15px;
+}
+
+.radio-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 4px;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  transition: all 0.2s ease;
+}
+
+.radio-label:hover {
+  background-color: #e9ecef;
+}
+
+.radio-label input {
+  margin-right: 8px;
+}
+
+.image-service-info {
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: #fff;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+}
+
+.warning-text {
+  color: #856404;
+  background-color: #fff3cd;
+  padding: 8px;
+  border-radius: 4px;
+  margin-top: 10px;
+  font-size: 0.9rem;
+}
+
+.image-generation-instructions {
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+}
+
+.image-generation-instructions h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+}
+
+.image-generation-instructions ol {
+  margin-left: 20px;
+  padding-left: 0;
+}
+
+.image-generation-instructions li {
+  margin-bottom: 8px;
+}
+
+/* Blog Image Generation */
+.image-generation-section {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+}
+
+.insert-images-button {
+  margin-top: 10px;
+  padding: 8px 16px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.insert-images-button:hover {
+  background-color: #218838;
+}
+
+.blog-images-preview {
+  margin-top: 20px;
+}
+
+.blog-images-preview h3 {
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+.image-preview-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.image-preview-item h4 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+  color: #555;
+  text-align: center;
+}
+
+.preview-image {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  object-fit: cover;
+  max-height: 150px;
+}
+/* Add responsive adjustments for different pages */
+.page-container .layout-container {
+  min-height: 30vh; /* Reduce empty space by 40-60% on other pages */
+}
