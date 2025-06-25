@@ -1,14 +1,14 @@
-import { Link } from 'react-router-dom';
-import './Footer.css';
+import Link from 'next/link'
+import './Footer.css'
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear();
+  const currentYear = new Date().getFullYear()
   
   return (
     <footer className="footer">
       <div className="footer-container">
         <div className="footer-logo">
-          <Link to="/">AI SEO Blog Generator</Link>
+          <Link href="/">AI SEO Blog Generator</Link>
           <p>Your ultimate tool for creating SEO-optimized blog content</p>
         </div>
         
@@ -16,17 +16,17 @@ const Footer = () => {
           <div className="footer-links-column">
             <h3>Navigation</h3>
             <ul>
-              <li><Link to="/">Home</Link></li>
-              <li><Link to="/about">About</Link></li>
-              <li><Link to="/contact">Contact</Link></li>
+              <li><Link href="/">Home</Link></li>
+              <li><Link href="/about">About</Link></li>
+              <li><Link href="/contact">Contact</Link></li>
             </ul>
           </div>
           
           <div className="footer-links-column">
             <h3>Legal</h3>
             <ul>
-              <li><Link to="/privacy">Privacy Policy</Link></li>
-              <li><Link to="/terms">Terms of Use</Link></li>
+              <li><Link href="/privacy">Privacy Policy</Link></li>
+              <li><Link href="/terms">Terms of Use</Link></li>
             </ul>
           </div>
         </div>
@@ -36,7 +36,7 @@ const Footer = () => {
         <p>&copy; {currentYear} AI SEO Blog Generator. All rights reserved.</p>
       </div>
     </footer>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer
